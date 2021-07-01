@@ -1,8 +1,6 @@
-  #if defined(ARDUINO) && ARDUINO >= 100
-  #include "Arduino.h"
-  #else
-//  #include "WProgram.h"
-  #endif
+#ifndef MCINFER_H
+#define MCINFER_h
+
 #include <float.h>
 #include <stddef.h>
 #include <QtMath>
@@ -199,3 +197,4 @@ int GetResult(fuzzy_model *model,float *output);
 */
 size_t RuleSize(fuzzy_model *model);
 }
+#endif //

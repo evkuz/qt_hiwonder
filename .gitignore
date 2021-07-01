@@ -1,4 +1,7 @@
 *
 !hiwonder_qt*
 !hiwonder_qt/*.*
+!neuron*
+!neuron/*.*
+
 

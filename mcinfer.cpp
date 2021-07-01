@@ -1,4 +1,5 @@
 #include "mcinfer.h"
+//#include "mainwindow.h"
 
 #ifdef USE_EXP
 #include <math.h>

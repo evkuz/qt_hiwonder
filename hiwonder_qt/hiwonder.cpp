@@ -58,11 +58,11 @@ void HiWonder::Open_Port_Slot(QString portname)
 
 }
 //++++++++++++++++++++++
-void HiWonder::GoToPosition(QByteArray &position, const char *servo)
+void HiWonder::GoToPosition(QByteArray &position)//, const char *servo)
 {
-    QString str, str2;
-    int sz = position.size();
-    if (sz > robot_buffer_SIZE) sz = robot_buffer_SIZE;
+    QString str;
+//    int sz = position.size();
+//    if (sz > robot_buffer_SIZE) sz = robot_buffer_SIZE;
 
    serial.write(position);
    serial.waitForBytesWritten();
@@ -73,13 +73,18 @@ void HiWonder::GoToPosition(QByteArray &position, const char *servo)
 //    //str = str + str2;
 //    this->Write_To_Log(0xF001, str);
 
-    void *const tmp = const_cast<char*>(servo);
-    unsigned char* sData = static_cast<unsigned char*>(tmp);
+//    void *const tmp = const_cast<char*>(servo);
+//    unsigned char* sData = static_cast<unsigned char*>(tmp);
+   unsigned char sData [7]= {0,0,0,0,0,0,0};
+   memcpy(&sData, position,7);
 
     str = "To Robot: ";
-    for (int i=0; i<= DOF - 1; i++){
-        str += QString::number(sData[i]);
+    for (int i=0; i<= szData - 1; i++){
+    //    str += QString::number(sData[i]);
+        //str+= QString::number(position.at(i));
+        str+= QString::number(sData[i]);
         str+= ", ";
+
     }
     this->Write_To_Log(0xF001, str);
     serial.waitForReadyRead();
@@ -88,7 +93,11 @@ void HiWonder::GoToPosition(QByteArray &position, const char *servo)
     this->Write_To_Log(0xF001, str);
     qbuf = serial.readAll();
     //qbuf = "askdjhfakjhfak";
+<<<<<<< HEAD:hiwonder_qt/hiwonder.cpp
     str = "From Robot ";
+=======
+    str = "From Robot :";
+>>>>>>> 38cefc28371631f4e72e6df4dc3f8da3f848f4e9:hiwonder.cpp
     str += QString(qbuf);
     this->Write_To_Log(0xF001, str);
 

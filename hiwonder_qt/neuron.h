@@ -95,7 +95,5 @@ float de=0.1;
 
         }; /* done */
 
-        //void try_mcinfer(float *data);
-        void try_mcinfer(void);
 
 #endif // NEURON_H
