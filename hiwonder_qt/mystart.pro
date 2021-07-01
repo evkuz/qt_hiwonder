@@ -11,12 +11,18 @@ QT += serialport
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    hiwonder.cpp \
+    mcinfer.cpp \
+    neuron.cpp
 
 HEADERS += \
     evkuz.h \
     mainwindow.h \
-    positions.h
+    mcinfer.h \
+    neuron.h \
+    positions.h \
+    hiwonder.h
 
 FORMS += \
     mainwindow.ui
@@ -25,3 +31,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    пример использования.txt
